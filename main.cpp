@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <vector>
 #define STB_IMAGE_IMPLEMENTATION // Definir esta macro antes de incluir stb_image.h
-#include "stb_image.h" // Asegúrate de tener stb_image.h en tu proyecto
+#include "stb_image.h" // Asegúrate de tener stb_image.h en la carpeta junto al main
 
 int main (){
     struct plant{
