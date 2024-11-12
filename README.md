@@ -129,3 +129,10 @@ El programa implementa la lectura de imágenes desde un directorio usando la fun
 Lectura de imágenes: La función stbi_load se usa para cargar las imágenes y obtener sus dimensiones. Si la carga es exitosa, la imagen se agrega al vector imagenes. Esta acción tiene una complejidad de O(m * N), donde m es el número de imágenes y N es el tamaño promedio de cada imagen en píxeles.
 
 Lectura de tamaños de archivo: El tamaño de cada archivo de imagen se obtiene con la función std::filesystem::file_size, lo que permite almacenar el tamaño de cada imagen en el vector de manera eficiente.
+
+## Respecto a alerta de AI 
+Le explico que paso:
+- trabaje con librerias que no habia usado antes, asi que en la mayoria le pedi a Chatgpt que generara un ejemplos y de ahi me base. Es posible, que le salga alerta ya que me base mucho es ello
+- Comentarios: los analisis de complegidad los pedi a un Ai ya que en cierto punto ya no entendi como estaba contando jaja
+- Archivo.h stb_image: esta un una libreria de Github que descarge para usar
+- Archivo.h PriceRead: como dije en la parte de comentarios, puse las funciones para sacar el analisis de complegidad, pero esta funcion (apesar del comentario de lambda) fue hecho totalmente a mano con ayuda de un amigo ya que no sabia que estaba haciendo
