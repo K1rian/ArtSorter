@@ -83,7 +83,7 @@ Imagen: imagen1.jpg | Precio: $7.00
 
 ## Notas
 ### Compatibilidad con otros sistemas operativos: 
-Actualmente, la función std::system("start") es específica de Windows. Para usar este programa en otros sistemas operativos como Linux o macOS, deberás modificar esa parte del código para usar los comandos adecuados (como xdg-open en Linux o open en macOS).
+Actualmente, la función std::system("start") es específica de Windows. Para usar este programa en otros sistemas operativos como GNU/Linux o macOS, deberás modificar esa parte del código para usar los comandos adecuados (como xdg-open en Linux o open en macOS).
 
 ### Tamaño y rendimiento: 
 El rendimiento del programa puede verse afectado por la cantidad de imágenes que se cargan. Si el directorio contiene muchas imágenes grandes, la carga y procesamiento pueden tomar un tiempo considerable.
