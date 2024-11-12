@@ -11,6 +11,7 @@ Soporte para múltiples formatos de imagen: Utiliza la biblioteca stb_image para
 C++11 o superior.
 Biblioteca stb_image para el manejo de imágenes.
 Un sistema operativo compatible con la función std::system("start") (Windows, por ejemplo).
+
 ## Compilación e Instalación
 Instalar dependencias:
 
@@ -21,6 +22,10 @@ Compilar el programa: Para compilar el código, usa un compilador de C++
 Ejecutar el programa: Una vez compilado, ejecuta el programa:
 
 ```ArtSorter.exe```
+
+Ó si estas usando CMD solo ingresa el nombre del exe:
+
+```ArtSorter```
 
 ## Uso
 El programa se ejecuta en un bucle interactivo con las siguientes opciones:
@@ -33,11 +38,12 @@ El programa se ejecuta en un bucle interactivo con las siguientes opciones:
 
 ```Guardar presios en archivo``` Guarda la lista de presios en un .txt y lo abre imediatamente.
 
+```Imprimir precios``` Muestra la lista de precios
+
 ```Salir: ```Finaliza el programa.
 
 ## Estructura de directorios
 El programa busca las imágenes en un directorio llamado Proyecto_dibujo que debe encontrarse en la misma carpeta donde se ejecuta el programa. Asegúrate de tener este directorio con imágenes dentro.
-
 
 
 
@@ -66,6 +72,14 @@ Precios ordenados:
 Imagen: imagen2.jpg | Precio: $8.00
 Imagen: imagen1.jpg | Precio: $10.00
 
+#### Guardar precios en archivo
+Te guarda los precios en un archivo .txt al cual puedes acceder en cualquier momento fuerra del programa
+
+#### Imprimir precios
+Muestra el nombre de cada archivo seguido del presio asignado, si esque a este ya se le habia dado uno. Por ejemplo:
+
+Imagen: imagen1.jpg | Precio: $7.00
+
 
 ## Notas
 ### Compatibilidad con otros sistemas operativos: 
@@ -75,15 +89,34 @@ Actualmente, la función std::system("start") es específica de Windows. Para us
 El rendimiento del programa puede verse afectado por la cantidad de imágenes que se cargan. Si el directorio contiene muchas imágenes grandes, la carga y procesamiento pueden tomar un tiempo considerable.
 
 ## SICT0301: Evalúa los componentes
-Análisis de complejidad del algoritmo de ordenamiento (Merge Sort)
-En el programa, se utiliza el algoritmo Merge Sort para ordenar las imágenes por su tamaño. Este algoritmo tiene una complejidad O(m log m), donde m es el número de imágenes a ordenar. Esto se debe a que Merge Sort es un algoritmo de división y conquista, donde el conjunto de datos se divide recursivamente hasta llegar a conjuntos de un solo elemento y luego se fusionan de manera ordenada. El costo de cada fusión es proporcional a O(m) y el número de divisiones es proporcional a log m, lo que da como resultado una complejidad global de O(m log m).
+
+### Análisis de Complejidad del Código
+
+#### 1. Algoritmo de Ordenamiento (Merge Sort)
+   - En el programa, se utiliza el algoritmo Merge Sort para ordenar las imágenes por su tamaño en el vector imagenes. Este algoritmo tiene una complejidad de \( O(m \log m) \), donde \( m \) es el número de imágenes a ordenar. Esto se debe a que Merge Sort es un algoritmo de **división y conquista**, donde el conjunto de datos se divide recursivamente hasta llegar a conjuntos de un solo elemento y luego se fusionan de manera ordenada. El costo de cada fusión es proporcional a \( O(m) \), y el número de divisiones es proporcional a \( \log m \), lo que da como resultado una complejidad global de \( O(m \log m) \).
+
+#### 2. Función listarImagenes
+   - La función listarImagenes recorre el vector imagenes y muestra los detalles de cada imagen. Su complejidad es **O(m)**, donde \( m \) es el número de imágenes en el vector. Esto se debe a que la función realiza una operación constante para cada imagen sin procesos adicionales de ordenamiento o búsqueda.
+
+#### 3. Función ordenarPrecios
+   - Para ordenar y mostrar los precios, se convierte el map de precios a un vector y se ordena utilizando std::sort, lo que tiene una complejidad de **O(n \log n)**, donde \( n \) es el número de precios. La ordenación en este caso se realiza en función de los precios, y std::sort tiene una eficiencia de \( O(n \log n) \), similar al Merge Sort.
+
+#### 4. Función archivopresio
+   - Esta función guarda los precios en un archivo de texto. Recorre todos los elementos en el map de precios para escribir cada par en el archivo, con una complejidad de **O(n)**, donde \( n \) es la cantidad de precios. No realiza ninguna operación de ordenamiento ni búsqueda, solo recorre el map una vez.
+
+#### 5. Función abrirImagen
+   - La función abrirImagen recorre el vector de imagenes buscando una coincidencia con el nombre ingresado por el usuario. Esto implica una búsqueda lineal, resultando en una complejidad de **O(m)**, donde \( m \) es el número de imágenes. En el peor de los casos, el programa deberá recorrer todo el vector antes de encontrar el nombre o determinar que no existe.
+
+#### 6. Función main
+   - En el main, el código realiza operaciones de lectura de archivos, ordenamiento y manipulación de las imágenes en el vector y precios en el mapa. El paso más costoso es el ordenamiento con Merge Sort en el vector imagenes, lo cual domina la complejidad global del programa, resultando en una complejidad general de **O(m \log m)**. La lectura de archivos y otras operaciones en main son lineales o constantes y no afectan significativamente la complejidad global del programa.
+
+#### Complejidad Global
+La complejidad del programa está dominada por el algoritmo de ordenamiento (Merge Sort), que tiene una complejidad de **O(m \log m)**, donde \( m \) es el número de imágenes a ordenar. En términos de espacio, la complejidad es de **O(m + n)**, donde \( m \) representa las imágenes almacenadas en el vector y \( n \) los precios en el mapa.
 
 ## SICT0302: Toma decisiones
-Selección del algoritmo de ordenamiento adecuado
 El algoritmo seleccionado es Merge Sort, que es adecuado para el tipo de problema que se enfrenta en este proyecto: ordenar un conjunto de imágenes por su tamaño. Merge Sort es eficiente y tiene un rendimiento garantizado de O(m log m), lo que lo hace adecuado para manejar un gran número de imágenes, incluso cuando el número de imágenes es grande. Si bien existen otros algoritmos de ordenamiento, como QuickSort, Merge Sort se seleccionó debido a su estabilidad y su rendimiento en el peor caso, que es particularmente importante cuando se manejan datos no garantizados de tamaño homogéneo.
 
 ## SICT0303: Implementa acciones científicas
-Implementación de mecanismos para consultar información de las estructuras correctos
 El programa implementa un sistema de consultas para listar imágenes y precios:
 
 Consulta de imágenes: La función listarImagenes recorre el vector imagenes y muestra la información relevante de cada imagen (nombre, tamaño y dimensiones). Esta consulta es O(m), ya que debe recorrer todas las imágenes almacenadas en el vector.
