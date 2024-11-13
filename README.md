@@ -92,8 +92,16 @@ El rendimiento del programa puede verse afectado por la cantidad de imágenes qu
 
 ### Análisis de Complejidad del Código
 
+### los analisis de complejidad estan dentro del codigo en comentarios
+
 #### 1. Algoritmo de Ordenamiento (Merge Sort)
-   - En el programa, se utiliza el algoritmo Merge Sort para ordenar las imágenes por su tamaño en el vector imagenes. Este algoritmo tiene una complejidad de \( O(m \log m) \), donde \( m \) es el número de imágenes a ordenar. Esto se debe a que Merge Sort es un algoritmo de **división y conquista**, donde el conjunto de datos se divide recursivamente hasta llegar a conjuntos de un solo elemento y luego se fusionan de manera ordenada. El costo de cada fusión es proporcional a \( O(m) \), y el número de divisiones es proporcional a \( \log m \), lo que da como resultado una complejidad global de \( O(m \log m) \).
+- En el programa se utiliza el algoritmo Merge Sort para ordenar las imágenes en el vector imagenes por tamaño. La complejidad de Merge Sort es O(m log m), donde m es el número de imágenes. Este algoritmo es de división y conquista: el conjunto de datos se divide en subgrupos recursivamente hasta llegar a conjuntos de un solo elemento, que luego se fusionan en orden. Dado que el costo de cada operación de fusión es proporcional a O(m) y el proceso de división tiene una profundidad de log m, la complejidad total es O(m log m).
+
+- Mejor caso: O(m log m). Merge Sort siempre requiere el mismo número de comparaciones y fusiones, sin importar el orden de los elementos, debido a su naturaleza recursiva y estructura fija. Por ello, su rendimiento es constante en cualquier situación.
+- Peor caso: O(m log m). Como Merge Sort no depende del orden inicial de los elementos (no tiene peor caso en comparación con Quick Sort, por ejemplo), el rendimiento en el peor caso también es O(m log m).
+
+- Conclucion:
+Merge Sort es estable (preserva el orden de elementos iguales) y predecible en su complejidad. A pesar de que requiere memoria adicional para almacenar las submatrices y la matriz final, su rendimiento consistente y estabilidad en cualquier caso lo hacen ideal para ordenar un conjunto de elementos en el que el espacio extra no es un inconveniente.
 
 #### 2. Función listarImagenes
    - La función listarImagenes recorre el vector imagenes y muestra los detalles de cada imagen. Su complejidad es **O(m)**, donde \( m \) es el número de imágenes en el vector. Esto se debe a que la función realiza una operación constante para cada imagen sin procesos adicionales de ordenamiento o búsqueda.
@@ -101,7 +109,7 @@ El rendimiento del programa puede verse afectado por la cantidad de imágenes qu
 #### 3. Función ordenarPrecios
    - Para ordenar y mostrar los precios, se convierte el map de precios a un vector y se ordena utilizando std::sort, lo que tiene una complejidad de **O(n \log n)**, donde \( n \) es el número de precios. La ordenación en este caso se realiza en función de los precios, y std::sort tiene una eficiencia de \( O(n \log n) \), similar al Merge Sort.
 
-#### 4. Función archivopresio
+#### 4. Función archivoprecio
    - Esta función guarda los precios en un archivo de texto. Recorre todos los elementos en el map de precios para escribir cada par en el archivo, con una complejidad de **O(n)**, donde \( n \) es la cantidad de precios. No realiza ninguna operación de ordenamiento ni búsqueda, solo recorre el map una vez.
 
 #### 5. Función abrirImagen
