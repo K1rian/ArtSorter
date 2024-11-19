@@ -34,6 +34,8 @@ El programa se ejecuta en un bucle interactivo con las siguientes opciones:
 
 ```Abrir imagen:``` Permite al usuario abrir una imagen específica desde el directorio utilizando el programa predeterminado del sistema.
 
+```Abrir imagen anterior:``` Permite al usuario abrir la imagen previamente abvierta desde el directorio utilizando el programa predeterminado del sistema.
+
 ```Listar precios y ordenar:``` Permite asignarle presios a las imagenes y las ordena de mayor a menor respecto al presio.
 
 ```Guardar presios en archivo``` Guarda la lista de presios en un .txt y lo abre imediatamente.
@@ -59,6 +61,10 @@ Ejemplo:
 
 Permite abrir una imagen usando el visualizador predeterminado del sistema operativo. Escribe el nombre de la imagen que deseas abrir 
 (por ejemplo, imagen1.jpg).
+
+#### Abrir imagen previa:
+
+Permite abrir la imagen previamente abierta usando el visualizador predeterminado del sistema operativo. 
 
 #### Listar precios y ordenar:
 
@@ -103,6 +109,16 @@ El rendimiento del programa puede verse afectado por la cantidad de imágenes qu
 - Conclucion:
 Merge Sort es estable (preserva el orden de elementos iguales) y predecible en su complejidad. A pesar de que requiere memoria adicional para almacenar las submatrices y la matriz final, su rendimiento consistente y estabilidad en cualquier caso lo hacen ideal para ordenar un conjunto de elementos en el que el espacio extra no es un inconveniente.
 
+#### 2. Estructura de datos (Pila Stack)
+- En el programa se utiliza la estructura de datos stack para manejar el historial de imágenes abiertas. Un stack sigue el principio LIFO (Last In, First Out), donde el último elemento insertado es el primero en salir. Esta característica hace que sea ideal para el manejo de secuencias reversibles, como un historial de acciones.
+
+- Operaciones de inserción (push): O(1) - Cada nueva inserción en el stack requiere únicamente colocar el elemento en la parte superior de la pila, lo que es un proceso constante.
+- Operaciones de eliminación (pop): O(1) - Eliminar el elemento superior también es una operación constante, ya que no requiere reorganizar otros elementos en la pila.
+- Acceso al tope (top): O(1) - Consultar el elemento en la parte superior del stack es inmediato y no implica iterar sobre la estructura.
+
+- Conclucion:
+  El uso de stack en este programa es adecuado debido a su eficiencia y al patrón de acceso que se requiere en el historial de imágenes y el almacenamiento temporal de precios. Su capacidad para manejar elementos en orden inverso al de entrada es una ventaja clave en la funcionalidad de "historial". 
+
 #### 2. Función listarImagenes
    - La función listarImagenes recorre el vector imagenes y muestra los detalles de cada imagen. Su complejidad es **O(m)**, donde \( m \) es el número de imágenes en el vector. Esto se debe a que la función realiza una operación constante para cada imagen sin procesos adicionales de ordenamiento o búsqueda.
 
@@ -115,11 +131,14 @@ Merge Sort es estable (preserva el orden de elementos iguales) y predecible en s
 #### 5. Función abrirImagen
    - La función abrirImagen recorre el vector de imagenes buscando una coincidencia con el nombre ingresado por el usuario. Esto implica una búsqueda lineal, resultando en una complejidad de **O(m)**, donde \( m \) es el número de imágenes. En el peor de los casos, el programa deberá recorrer todo el vector antes de encontrar el nombre o determinar que no existe.
 
-#### 6. Función main
+#### 6. Función abrirHistorial
+   - La función abrirHistorial abre la última imagen almacenada en el historial, utilizando el principio LIFO del stack, y muestra un mensaje si el historial está vacío.
+
+#### 7. Función main
    - En el main, el código realiza operaciones de lectura de archivos, ordenamiento y manipulación de las imágenes en el vector y precios en el mapa. El paso más costoso es el ordenamiento con Merge Sort en el vector imagenes, lo cual domina la complejidad global del programa, resultando en una complejidad general de **O(m \log m)**. La lectura de archivos y otras operaciones en main son lineales o constantes y no afectan significativamente la complejidad global del programa.
 
 #### Complejidad Global
-La complejidad del programa está dominada por el algoritmo de ordenamiento (Merge Sort), que tiene una complejidad de **O(m \log m)**, donde \( m \) es el número de imágenes a ordenar. En términos de espacio, la complejidad es de **O(m + n)**, donde \( m \) representa las imágenes almacenadas en el vector y \( n \) los precios en el mapa.
+La complejidad del programa está dominada por el algoritmo de ordenamiento (Merge Sort), que tiene una complejidad de **O(m log m)**, donde  ( m ) es el número de imágenes a ordenar. En términos de espacio, la complejidad es de **O(m + n)**, donde  ( m ) representa las imágenes almacenadas en el vector y  ( n ) los precios en el mapa.
 
 ## SICT0302: Toma decisiones
 El algoritmo seleccionado es Merge Sort, que es adecuado para el tipo de problema que se enfrenta en este proyecto: ordenar un conjunto de imágenes por su tamaño. Merge Sort es eficiente y tiene un rendimiento garantizado de O(m log m), lo que lo hace adecuado para manejar un gran número de imágenes, incluso cuando el número de imágenes es grande. Si bien existen otros algoritmos de ordenamiento, como QuickSort, Merge Sort se seleccionó debido a su estabilidad y su rendimiento en el peor caso, que es particularmente importante cuando se manejan datos no garantizados de tamaño homogéneo.
@@ -137,6 +156,7 @@ El programa implementa la lectura de imágenes desde un directorio usando la fun
 Lectura de imágenes: La función stbi_load se usa para cargar las imágenes y obtener sus dimensiones. Si la carga es exitosa, la imagen se agrega al vector imagenes. Esta acción tiene una complejidad de O(m * N), donde m es el número de imágenes y N es el tamaño promedio de cada imagen en píxeles.
 
 Lectura de tamaños de archivo: El tamaño de cada archivo de imagen se obtiene con la función std::filesystem::file_size, lo que permite almacenar el tamaño de cada imagen en el vector de manera eficiente.
+
 
 ## Respecto a alerta de AI 
 Le explico que paso:
