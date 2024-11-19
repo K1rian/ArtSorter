@@ -5,6 +5,7 @@
 #include <sys/types.h>
 #include <vector>
 #include <stack>
+#include <map>
 #include <utility>
 #include <algorithm>
 #include "PriceRead.h"
@@ -165,7 +166,8 @@ void abrirImagen(const std::vector<plant>& imagenes, std::stack<plant>& historia
     std::cout << "Imagen no encontrada.\n";
 }
 
-void abrirHistorial(std::stack<plant>historial){  // Complejidad espacial O(1) ya que solo se usa una variable adicional para almacenar el elemento
+// Complejidad espacial O(1) ya que solo se usa una variable adicional para almacenar el elemento
+void abrirHistorial(std::stack<plant>historial){  
     if (!historial.empty()){
         plant img = historial.top();
         
@@ -261,6 +263,7 @@ int main() {
             case 5:
                 archivopresio(precios);
                 break;
+
             case 6: { 
                 std::map<std::string, double> preciosDesdeArchivo;
                 std::string nombreArchivo = "precios.txt";
@@ -270,9 +273,10 @@ int main() {
             }
             case 7:
                 std::cout << "Ya me void ...\n";
+                exit(1);
                 break;
             default:
-                std::cout << "Opcion no válida, intenta de nuevo.\n";
+                std::cout << "Opcion no valida, intenta de nuevo.\n";
         }
     } while (opcion != 6);
 
