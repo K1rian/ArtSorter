@@ -101,10 +101,10 @@ El rendimiento del programa puede verse afectado por la cantidad de imágenes qu
 ### los analisis de complejidad estan dentro del codigo en comentarios
 
 #### 1. Algoritmo de Ordenamiento (Merge Sort)
-- En el programa se utiliza el algoritmo Merge Sort para ordenar las imágenes en el vector imagenes por tamaño. La complejidad de Merge Sort es O(m log m), donde m es el número de imágenes. Este algoritmo es de división y conquista: el conjunto de datos se divide en subgrupos recursivamente hasta llegar a conjuntos de un solo elemento, que luego se fusionan en orden. Dado que el costo de cada operación de fusión es proporcional a O(m) y el proceso de división tiene una profundidad de log m, la complejidad total es O(m log m).
+- En el programa se utiliza el algoritmo Merge Sort para ordenar las imágenes en el vector imagenes por tamaño. La complejidad de Merge Sort es O(n log n), donde n es el número de imágenes. Este algoritmo es de división y conquista: el conjunto de datos se divide en subgrupos recursivamente hasta llegar a conjuntos de un solo elemento, que luego se fusionan en orden. Dado que el costo de cada operación de fusión es proporcional a O(n) y el proceso de división tiene una profundidad de log m, la complejidad total es O(n log n).
 
-- Mejor caso: O(m log m). Merge Sort siempre requiere el mismo número de comparaciones y fusiones, sin importar el orden de los elementos, debido a su naturaleza recursiva y estructura fija. Por ello, su rendimiento es constante en cualquier situación.
-- Peor caso: O(m log m). Como Merge Sort no depende del orden inicial de los elementos (no tiene peor caso en comparación con Quick Sort, por ejemplo), el rendimiento en el peor caso también es O(m log m).
+- Mejor caso: O(n log n). Merge Sort siempre requiere el mismo número de comparaciones y fusiones, sin importar el orden de los elementos, debido a su naturaleza recursiva y estructura fija. Por ello, su rendimiento es constante en cualquier situación.
+- Peor caso: O(n log n). Como Merge Sort no depende del orden inicial de los elementos (no tiene peor caso en comparación con Quick Sort, por ejemplo), el rendimiento en el peor caso también es O(m log m).
 
 - Conclucion:
 Merge Sort es estable (preserva el orden de elementos iguales) y predecible en su complejidad. A pesar de que requiere memoria adicional para almacenar las submatrices y la matriz final, su rendimiento consistente y estabilidad en cualquier caso lo hacen ideal para ordenar un conjunto de elementos en el que el espacio extra no es un inconveniente.
@@ -123,25 +123,27 @@ Merge Sort es estable (preserva el orden de elementos iguales) y predecible en s
    - La función listarImagenes recorre el vector imagenes y muestra los detalles de cada imagen. Su complejidad es **O(m)**, donde \( m \) es el número de imágenes en el vector. Esto se debe a que la función realiza una operación constante para cada imagen sin procesos adicionales de ordenamiento o búsqueda.
 
 #### 3. Función ordenarPrecios
-   - Para ordenar y mostrar los precios, se convierte el map de precios a un vector y se ordena utilizando std::sort, lo que tiene una complejidad de **O(n \log n)**, donde \( n \) es el número de precios. La ordenación en este caso se realiza en función de los precios, y std::sort tiene una eficiencia de \( O(n \log n) \), similar al Merge Sort.
+   - Para ordenar y mostrar los precios, se convierte el map de precios a un vector y se ordena utilizando std::sort, lo que tiene una complejidad de **O(n log n)**, donde ( n ) es el número de precios. La ordenación en este caso se realiza en función de los precios, y std::sort tiene una eficiencia de ( O(n log n) , similar al Merge Sort.
 
 #### 4. Función archivoprecio
-   - Esta función guarda los precios en un archivo de texto. Recorre todos los elementos en el map de precios para escribir cada par en el archivo, con una complejidad de **O(n)**, donde \( n \) es la cantidad de precios. No realiza ninguna operación de ordenamiento ni búsqueda, solo recorre el map una vez.
+   - Esta función guarda los precios en un archivo de texto. Recorre todos los elementos en el map de precios para escribir cada par en el archivo, con una complejidad de **O(n)**, donde ( n ) es la cantidad de precios. No realiza ninguna operación de ordenamiento ni búsqueda, solo recorre el map una vez.
 
 #### 5. Función abrirImagen
-   - La función abrirImagen recorre el vector de imagenes buscando una coincidencia con el nombre ingresado por el usuario. Esto implica una búsqueda lineal, resultando en una complejidad de **O(m)**, donde \( m \) es el número de imágenes. En el peor de los casos, el programa deberá recorrer todo el vector antes de encontrar el nombre o determinar que no existe.
+   - La función abrirImagen recorre el vector de imagenes buscando una coincidencia con el nombre ingresado por el usuario. Esto implica una búsqueda lineal, resultando en una complejidad de **O(n)**, donde ( n) es el número de imágenes. En el peor de los casos, el programa deberá recorrer todo el vector antes de encontrar el nombre o determinar que no existe.
 
 #### 6. Función abrirHistorial
    - La función abrirHistorial abre la última imagen almacenada en el historial, utilizando el principio LIFO del stack, y muestra un mensaje si el historial está vacío.
 
 #### 7. Función main
-   - En el main, el código realiza operaciones de lectura de archivos, ordenamiento y manipulación de las imágenes en el vector y precios en el mapa. El paso más costoso es el ordenamiento con Merge Sort en el vector imagenes, lo cual domina la complejidad global del programa, resultando en una complejidad general de **O(m \log m)**. La lectura de archivos y otras operaciones en main son lineales o constantes y no afectan significativamente la complejidad global del programa.
+   - En el main, el código realiza operaciones de lectura de archivos, ordenamiento y manipulación de las imágenes en el vector y precios en el mapa. El paso más costoso es el ordenamiento con Merge Sort en el vector imagenes, lo cual domina la complejidad global del programa, resultando en una complejidad general de **O(n log n)**. La lectura de archivos y otras operaciones en main son lineales o constantes y no afectan significativamente la complejidad global del programa.
 
 #### Complejidad Global
-La complejidad del programa está dominada por el algoritmo de ordenamiento (Merge Sort), que tiene una complejidad de **O(m log m)**, donde  ( m ) es el número de imágenes a ordenar. En términos de espacio, la complejidad es de **O(m + n)**, donde  ( m ) representa las imágenes almacenadas en el vector y  ( n ) los precios en el mapa.
+La complejidad del programa está dominada por el algoritmo de ordenamiento (Merge Sort), que tiene una complejidad de **O(n log n)**, donde  ( n ) es el número de imágenes a ordenar. En términos de espacio, la complejidad es de **O(m + n)**, donde  ( n ) representa las imágenes almacenadas en el vector y  ( n ) los precios en el mapa.
 
 ## SICT0302: Toma decisiones
-El algoritmo seleccionado es Merge Sort, que es adecuado para el tipo de problema que se enfrenta en este proyecto: ordenar un conjunto de imágenes por su tamaño. Merge Sort es eficiente y tiene un rendimiento garantizado de O(m log m), lo que lo hace adecuado para manejar un gran número de imágenes, incluso cuando el número de imágenes es grande. Si bien existen otros algoritmos de ordenamiento, como QuickSort, Merge Sort se seleccionó debido a su estabilidad y su rendimiento en el peor caso, que es particularmente importante cuando se manejan datos no garantizados de tamaño homogéneo.
+El algoritmo seleccionado es Merge Sort, que es adecuado para el tipo de problema que se enfrenta en este proyecto: ordenar un conjunto de imágenes por su tamaño. Merge Sort es eficiente y tiene un rendimiento garantizado de O(m log m), lo que lo hace adecuado para manejar un gran número de imágenes, incluso cuando el número de imágenes es grande. Si bien existen otros algoritmos de ordenamiento, como Bubble Sort el cual tiene una complejidad de O(n^2) en el peor de los casos, Merge Sort se seleccionó debido a su estabilidad y su rendimiento en el peor caso, que es particularmente importante cuando se manejan datos no garantizados de tamaño homogéneo.
+
+El uso de Stack (pila) en el programa proporciona una estructura eficiente de tipo Last In, First Out (LIFO), ideal para gestionar un historial de operaciones. Cada acción, como abrir una imagen o guardar precios en un archivo.txt, puede registrarse utilizando la función push(), lo que garantiza que las operaciones más recientes estén siempre disponibles en la parte superior. A través de la función top(), se puede acceder rápidamente al último dato almacenado, facilitando un manejo ágil y ordenado de las acciones realizadas. Esto hace que el stack sea una herramienta práctica y funcional para la gestión de datos recientes en el programa.
 
 ## SICT0303: Implementa acciones científicas
 El programa implementa un sistema de consultas para listar imágenes y precios:
